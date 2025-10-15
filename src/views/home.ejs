@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandTrade - Nền tảng giao dịch đất đai uy tín</title>
+    <meta name="description" content="Nền tảng giao dịch đất đai trực tuyến uy tín, kết nối người mua và người bán qua môi giới chuyên nghiệp">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/auth-buttons.css">
+    <link rel="stylesheet" href="/css/auth-ui.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <i class="fas fa-landmark"></i>
+                    <span>LandTrade</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">
+                    <i class="fas fa-home"></i>
+                    Trang chủ
+                </a>
+                <a href="listings.html" class="nav-link">
+                    <i class="fas fa-list"></i>
+                    Tin rao
+                </a>
+                <a href="#services" class="nav-link">
+                    <i class="fas fa-handshake"></i>
+                    Dịch vụ
+                </a>
+                <a href="#about" class="nav-link">
+                    <i class="fas fa-info-circle"></i>
+                    Giới thiệu
+                </a>
+                <a href="#contact" class="nav-link">
+                    <i class="fas fa-phone"></i>
+                    Liên hệ
+                </a>
+                <div class="nav-auth">
+                    <button class="btn-login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button>
+                    <button class="btn-register"><i class="fas fa-user-plus"></i> Đăng ký</button>
+                </div>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Nền tảng giao dịch đất đai
+                        <span class="highlight">uy tín hàng đầu</span>
+                    </h1>
+                    <p class="hero-description">
+                        Kết nối người mua và người bán thông qua mạng lưới môi giới chuyên nghiệp. 
+                        Giao dịch an toàn, minh bạch và hiệu quả.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#" id="post-listing-btn" class="btn btn-primary btn-large">
+                            <i class="fas fa-plus"></i>
+                            Đăng tin ngay
+                        </a>
+                        <a href="listings.html" class="btn btn-secondary btn-large">
+                            <i class="fas fa-search"></i>
+                            Tìm kiếm đất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Search -->
+    <section class="quick-search">
+        <div class="container">
+            <div class="search-card">
+                <h2 class="search-title">Tìm kiếm nhanh</h2>
+                <form class="search-form" id="quick-search-form">
+                    <div class="search-row">
+                        <div class="search-field">
+                            <label for="location">Địa điểm</label>
+                            <select id="location" name="location">
+                                <option value="">Chọn tỉnh/thành</option>
+                                <option value="hcm">TP. Hồ Chí Minh</option>
+                                <option value="hanoi">Hà Nội</option>
+                                <option value="longan">Long An</option>
+                                <option value="binduong">Bình Dương</option>
+                                <option value="vungtau">Vũng Tàu</option>
+                                <option value="cantho">Cần Thơ</option>
+                                <option value="dongnai">Đồng Nai</option>
+                                <option value="dalat">Đà Lạt</option>
+                                <option value="angiang">An Giang</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-field">
+                            <label for="type">Loại đất</label>
+                            <select id="type" name="type">
+                                <option value="">Tất cả loại</option>
+                                <option value="residential">Đất thổ cư</option>
+                                <option value="commercial">Đất thương mại</option>
+                                <option value="agricultural">Đất nông nghiệp</option>
+                                <option value="industrial">Đất công nghiệp</option>
+                                <option value="resort">Đất nghỉ dưỡng</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-field">
+                            <label for="price-range">Khoảng giá</label>
+                            <select id="price-range" name="priceRange">
+                                <option value="">Chọn giá</option>
+                                <option value="0-1000000000">Dưới 1 tỷ</option>
+                                <option value="1000000000-3000000000">1 - 3 tỷ</option>
+                                <option value="3000000000-5000000000">3 - 5 tỷ</option>
+                                <option value="5000000000-10000000000">5 - 10 tỷ</option>
+                                <option value="10000000000-999999999999">Trên 10 tỷ</option>
+                            </select>
+                        </div>
+                        
+                        <div class="search-field">
+                            <label for="area-range">Diện tích</label>
+                            <select id="area-range" name="areaRange">
+                                <option value="">Chọn diện tích</option>
+                                <option value="0-100">Dưới 100m²</option>
+                                <option value="100-200">100 - 200m²</option>
+                                <option value="200-500">200 - 500m²</option>
+                                <option value="500-1000">500 - 1000m²</option>
+                                <option value="1000-999999">Trên 1000m²</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            Tìm kiếm
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Listings -->
+    <section class="featured-listings">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tin nổi bật</h2>
+                <p class="section-description">Những bất động sản được quan tâm nhiều nhất</p>
+                <a href="listings.html" class="view-all-link">
+                    Xem tất cả <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="listings-grid" id="featured-listings">
+                <!-- Featured listings will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Dịch vụ môi giới</h2>
+                <p class="section-description">Các dịch vụ chuyên nghiệp dành cho bạn</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search-location"></i>
+                    </div>
+                    <h3 class="service-title">Tìm kiếm BĐS</h3>
+                    <p class="service-description">
+                        Hỗ trợ tìm kiếm bất động sản theo yêu cầu cụ thể với đội ngũ môi giới chuyên nghiệp
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-tag">Miễn phí tư vấn</span>
+                        <span class="feature-tag">Hỗ trợ 24/7</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3 class="service-title">Hỗ trợ pháp lý</h3>
+                    <p class="service-description">
+                        Kiểm tra pháp lý, thẩm định giá, hỗ trợ thủ tục chuyển nhượng an toàn
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-tag">Thẩm định miễn phí</span>
+                        <span class="feature-tag">Bảo hiểm giao dịch</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="service-title">Môi giới chuyên nghiệp</h3>
+                    <p class="service-description">
+                        Đội ngũ môi giới có kinh nghiệm, am hiểu thị trường, hỗ trợ tối ưu giá trị giao dịch
+                    </p>
+                    <div class="service-features">
+                        <span class="feature-tag">Hoa hồng cạnh tranh</span>
+                        <span class="feature-tag">Cam kết chất lượng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-content">
+                <div class="benefits-text">
+                    <h2 class="section-title">Tại sao chọn LandTrade?</h2>
+                    <div class="benefit-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>An toàn & Uy tín</h3>
+                                <p>Kiểm duyệt nghiêm ngặt, bảo mật thông tin, cam kết chất lượng dịch vụ</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Mạng lưới rộng khắp</h3>
+                                <p>Hơn 10,000 môi giới chuyên nghiệp trên toàn quốc, phủ sóng mọi khu vực</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Công nghệ hiện đại</h3>
+                                <p>Ứng dụng AI định giá, phân tích thị trường, dự báo xu hướng chính xác</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="benefit-content">
+                                <h3>Nhanh chóng & Hiệu quả</h3>
+                                <p>Quy trình tối ưu, giao dịch nhanh chóng, tiết kiệm thời gian tối đa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefits-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">50,000+</div>
+                        <div class="stat-label">Tin rao hoạt động</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Môi giới chuyên nghiệp</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Khách hàng hài lòng</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Hỗ trợ khách hàng</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Về LandTrade</h2>
+                    <p class="about-description">
+                        LandTrade là nền tảng giao dịch bất động sản trực tuyến hàng đầu Việt Nam, 
+                        kết nối người mua và người bán thông qua mạng lưới môi giới chuyên nghiệp. 
+                        Chúng tôi cam kết mang đến trải nghiệm giao dịch an toàn, minh bạch và hiệu quả nhất.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Được cấp phép hoạt động bởi Bộ Xây dựng</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Đội ngũ hơn 500 chuyên gia kinh nghiệm</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Hệ thống bảo mật chuẩn quốc tế</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=400&fit=crop" 
+                         alt="Về LandTrade" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Liên hệ với chúng tôi</h2>
+                <p class="section-description">Sẵn sàng hỗ trợ bạn 24/7</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Địa chỉ</h3>
+                            <p>123 Đường Nguyễn Huệ, Quận 1, TP.HCM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Hotline</h3>
+                            <p>1900 1234 (miễn phí)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>support@landtrade.vn</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Giờ làm việc</h3>
+                            <p>24/7 - Hỗ trợ không ngừng nghỉ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="contact-name" name="name" placeholder="Họ và tên" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="contact-email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="contact-phone" name="phone" placeholder="Số điện thoại" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="contact-subject" name="subject" required>
+                            <option value="">Chọn chủ đề</option>
+                            <option value="buy">Tôi muốn mua đất</option>
+                            <option value="sell">Tôi muốn bán đất</option>
+                            <option value="broker">Tôi muốn trở thành môi giới</option>
+                            <option value="support">Hỗ trợ kỹ thuật</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="contact-message" name="message" placeholder="Nội dung tin nhắn" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i>
+                        Gửi tin nhắn
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-landmark"></i>
+                        <span>LandTrade</span>
+                    </div>
+                    <p class="footer-description">
+                        Nền tảng giao dịch bất động sản uy tín, 
+                        kết nối mọi người với cơ hội đầu tư tốt nhất.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Dịch vụ</h3>
+                    <ul class="footer-links">
+                        <li><a href="listings.html">Mua bán đất đai</a></li>
+                        <li><a href="#services">Môi giới chuyên nghiệp</a></li>
+                        <li><a href="#services">Thẩm định giá</a></li>
+                        <li><a href="#services">Hỗ trợ pháp lý</a></li>
+                        <li><a href="post-listing.html">Đăng tin miễn phí</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Liên kết nhanh</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Trang chủ</a></li>
+                        <li><a href="listings.html">Tin rao</a></li>
+                        <li><a href="#about">Giới thiệu</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Thông tin liên hệ</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Đường Nguyễn Huệ, Quận 1, TP.HCM</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>1900 1234</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>support@landtrade.vn</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2024 LandTrade. Tất cả quyền được bảo lưu.</p>
+                </div>
+                <div class="footer-legal">
+                    <a href="#">Điều khoản sử dụng</a>
+                    <a href="#">Chính sách bảo mật</a>
+                    <a href="#">Quy chế hoạt động</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="auth-modal-title">Đăng nhập</h2>
+                <button class="modal-close" onclick="closeAuthModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Login Form -->
+                <form class="auth-form" id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="text" id="login-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mật khẩu</label>
+                        <input type="password" id="login-password" name="password" required>
+                    </div>
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" id="login-remember" name="remember">
+                            <span class="checkmark"></span>
+                            Ghi nhớ đăng nhập
+                        </label>
+                        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-login-form">Đăng nhập</button>
+                </form>
+                
+                <!-- Register Form -->
+                <form class="auth-form auth-form-grid" id="register-form" style="display: none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="register-name">Họ và tên</label>
+                            <input type="text" id="register-name" name="name" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-phone">Số điện thoại</label>
+                            <input type="tel" id="register-phone" name="phone" placeholder="0912345678" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" name="email" placeholder="abc@gmail.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Mật khẩu</label>
+                            <input type="password" id="register-password" name="password" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox">
+                            <input type="checkbox" id="register-terms" name="terms" required>
+                            <span class="checkmark"></span>
+                            Tôi đồng ý với <a href="#" onclick="event.preventDefault()">Điều khoản sử dụng</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-register-form">Đăng ký</button>
+                </form>
+                
+                <div class="auth-switch">
+                    <p id="auth-switch-text">Chưa có tài khoản? <a href="#" onclick="switchAuthMode()">Đăng ký ngay</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Đang tải...</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="/js/app.js"></script>
+    <%- include('partials/profile-modal') %>
+</html>

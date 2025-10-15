@@ -1,0 +1,45 @@
+/* Nút đăng nhập và đăng ký trong form */
+.btn-login-form {
+    background: linear-gradient(to right, var(--primary-color), var(--primary-dark));
+    border: none;
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px;
+}
+
+.btn-login-form:hover {
+    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-register-form {
+    background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+    border: none;
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 12px;
+}
+
+.btn-register-form:hover {
+    box-shadow: 0 6px 12px rgba(14, 165, 233, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Animation cho nút */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    }
+}
+
+.btn-register {
+    animation: pulse 2s infinite;
+}

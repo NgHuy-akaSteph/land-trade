@@ -1,35 +1,147 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
-generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
-}
-
 datasource db {
-  provider = "mysql"
+  provider = "sqlserver"
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  posts     Post[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+generator client {
+  provider = "prisma-client-js"
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+model users {
+  id         String   @id @default(uuid())
+  email      String   @unique @db.NVarChar(100)
+  fullName   String   @db.NVarChar(255)
+  nameSearch String? // Tên không dấu để tìm kiếm
+  password   String   @db.NVarChar(500)
+  roleId     String
+  phone      String?  @unique @db.NVarChar(20)
+  avatarId   String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isDeleted  Boolean  @default(false)
+
+  role        roles          @relation(fields: [roleId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  avatar      images?        @relation("userAvatar", fields: [avatarId], references: [id], onDelete: SetNull, onUpdate: NoAction)
+  listings    listings[]
+  customer    transactions[] @relation("buyer")
+  seller      transactions[] @relation("seller")
+  sender      messages[]     @relation("sentMessages")
+  receiver    messages[]     @relation("receivedMessages")
+  socialLinks social_links[]
+
+  @@index([nameSearch]) // Index cho tìm kiếm
+  @@index([roleId]) // Index cho tìm kiếm theo vai trò
+  @@index([isDeleted, createdAt])
+}
+
+model roles {
+  id        String   @id @default(uuid())
+  name      String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  isDeleted Boolean  @default(false)
+
+  users users[]
+}
+
+model listings {
+  id          String   @id @default(uuid())
+  title       String   @db.NVarChar(255)
+  titleSearch String? // Tên không dấu để tìm kiếm
+  address     String
+  price       Float
+  description String?  @db.Text
+  direction   String
+  frontage    Float?
+  depth       Float?
+  area        Float
+  latitude    Float?
+  longitude   Float?
+  authorId    String
+  propTypesId String
+  status      String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  isDeleted   Boolean  @default(false)
+
+  author       users          @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  propTypes    property_types @relation(fields: [propTypesId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  images       images[]       @relation("listingImages")
+  transactions transactions[]
+
+  @@index([titleSearch]) // Index cho tìm kiếm
+  @@index([authorId, isDeleted, createdAt]) // Index cho tìm kiếm theo tác giả và sắp xếp theo ngày
+  @@index([latitude, longitude]) // Index cho tìm kiếm theo vị trí
+}
+
+model property_types {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isDeleted Boolean  @default(false)
+
+  listings listings[]
+}
+
+model images {
+  id        String   @id @default(uuid())
+  url       String   @db.NVarChar(3000)
+  publicId  String
+  listingId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isDeleted Boolean  @default(false)
+
+  listing    listings? @relation("listingImages", fields: [listingId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  userAvatar users[]   @relation("userAvatar")
+}
+
+model transactions {
+  id         String   @id @default(uuid())
+  name       String
+  nameSearch String? // Tên không dấu để tìm kiếm   
+  listingId  String
+  customerId String
+  sellerId   String
+  price      Float
+  status     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isDeleted  Boolean  @default(false)
+
+  listing  listings @relation(fields: [listingId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  customer users    @relation("buyer", fields: [customerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  seller   users    @relation("seller", fields: [sellerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([nameSearch]) // Index cho tìm kiếm
+  @@index([customerId, createdAt]) // Index cho tìm kiếm theo khách hàng và sắp xếp theo ngày
+  @@index([sellerId, createdAt]) // Index cho tìm kiếm theo người bán và sắp xếp theo ngày
+}
+
+model messages {
+  id         String   @id @default(uuid())
+  senderId   String
+  receiverId String
+  content    String   @db.Text
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  isDeleted  Boolean  @default(false)
+
+  sender   users @relation("sentMessages", fields: [senderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receiver users @relation("receivedMessages", fields: [receiverId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([senderId, createdAt]) // Index cho tìm kiếm theo người gửi và sắp xếp theo ngày
+}
+
+model social_links {
+  id        String   @id @default(uuid())
+  type      String   @db.NVarChar(100)
+  url       String
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isDeleted Boolean  @default(false)
+
+  user users @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

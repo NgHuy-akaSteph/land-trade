@@ -1,0 +1,412 @@
+/* ==================== ERROR & SUCCESS MESSAGES ==================== */
+
+.error-message {
+    color: #ef4444 !important;
+    font-size: 14px !important;
+    margin-top: 5px !important;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.error-message::before {
+    content: "⚠";
+    font-size: 12px;
+}
+
+.auth-required-notice {
+    font-family: 'Inter', sans-serif !important;
+}
+
+.auth-required-notice .notice-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-required-notice i {
+    font-size: 16px;
+    animation: pulse 1.5s infinite;
+}
+
+/* ==================== USER MENU ==================== */
+
+.user-info {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-700);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.user-name:hover {
+    background: rgba(37, 99, 235, 0.1);
+    color: var(--primary-color);
+}
+
+.user-name i {
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.user-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    overflow: hidden;
+    z-index: 1000;
+    border: 1px solid var(--gray-200);
+}
+
+.user-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    color: var(--gray-700);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+.user-menu-item:last-child {
+    border-bottom: none;
+}
+
+.user-menu-item:hover {
+    background: var(--gray-50);
+    color: var(--primary-color);
+    transform: translateX(4px);
+}
+
+.user-menu-item i {
+    width: 16px;
+    text-align: center;
+}
+
+.success-message {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    background: #10b981 !important;
+    color: white !important;
+    padding: 15px 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+    z-index: 10000 !important;
+    font-weight: 500 !important;
+    animation: slideInRight 0.3s ease-out !important;
+}
+
+.success-message::before {
+    content: "✓";
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateX(-50%) translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%) translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* ==================== FORM VALIDATION STATES ==================== */
+
+.auth-form input.error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+}
+
+.auth-form input.success {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ==================== LOADING ENHANCEMENTS ==================== */
+
+.loading-overlay {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.loading-spinner {
+    text-align: center;
+    color: white;
+}
+
+.loading-spinner i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.loading-spinner p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ==================== MODAL ENHANCEMENTS ==================== */
+
+.modal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal.show {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.modal-content {
+    animation: slideUp 0.3s ease-out;
+    margin: auto !important;
+    position: relative !important;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ==================== AUTH FORM IMPROVEMENTS ==================== */
+
+/* Grid layout for register form */
+.auth-form-grid .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 0 !important;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--gray-700);
+}
+
+.form-group input {
+    transition: all 0.3s ease;
+    padding: 10px 12px;
+}
+
+.form-group input::placeholder {
+    color: var(--gray-400);
+}
+
+
+/* Responsive - 1 column on mobile */
+@media (max-width: 768px) {
+    .auth-form-grid .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .form-group {
+        margin-bottom: 15px !important;
+    }
+}
+
+/* Checkbox styles */
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding-left: 28px;
+}
+
+.checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.checkbox a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.checkbox a::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.checkbox a:hover::before {
+    width: 100%;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--gray-300);
+    border-radius: 4px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.checkbox:hover .checkmark {
+    border-color: var(--primary-color);
+}
+
+.checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkbox input[type="checkbox"]:checked ~ .checkmark::after {
+    content: "✓";
+    position: absolute;
+    top: -2px;
+    left: 2px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Form options styling */
+.form-options {
+    margin-bottom: 15px;
+}
+
+/* Error styling for checkbox */
+.form-options .error-message {
+    display: block;
+    margin-top: 5px;
+    margin-left: 28px;
+}
+
+/* ==================== MODAL CENTERING FIX ==================== */
+
+#auth-modal.show {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+}
+
+#auth-modal {
+    display: none;
+}
+
+#auth-modal.show .modal-content {
+    position: static !important;
+    margin: 0 !important;
+    transform: none !important;
+    max-width: 500px !important;
+    width: 100% !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+}
+
+/* ==================== RESPONSIVE IMPROVEMENTS ==================== */
+
+@media (max-width: 768px) {
+    .success-message {
+        right: 10px !important;
+        left: 10px !important;
+        top: 10px !important;
+        text-align: center;
+    }
+    
+    #auth-modal.show {
+        padding: 10px !important;
+    }
+    
+    #auth-modal.show .modal-content {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}

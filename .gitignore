@@ -4,3 +4,4 @@ node_modules
 .idea
 .vscode
 /src/generated/prisma
+.docs

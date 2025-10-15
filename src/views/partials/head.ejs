@@ -1,0 +1,27 @@
+<%
+/**
+ * partial view cho phần head trong HTML
+ * 
+ * @param {string} title - Tiêu đề trang (mặc định: 'LandTrade - Nền tảng giao dịch đất đai uy tín')
+ * @param {string} description - Mô tả trang (mặc định: 'Nền tảng giao dịch đất đai trực tuyến uy tín, kết nối người mua và người bán qua môi giới chuyên nghiệp')
+ */
+
+// Đặt giá trị mặc định cho các biến
+const pageTitle = typeof title !== 'undefined' ? title : 'LandTrade - Nền tảng giao dịch đất đai uy tín';
+%>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle %></title>
+    <meta name="description" content="<%= pageDescription %>">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/auth-buttons.css">
+    <link rel="stylesheet" href="/css/auth-ui.css">
+    <link rel="stylesheet" href="/css/user-dropdown.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Optional: Jquery và Ajax -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
